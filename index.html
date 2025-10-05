@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STRIKE Universe Website</title>
+  <style>
+    :root {
+      /* Modern AI machine color palette */
+      --strike-primary: #71f0e8;          /* Vibrant cyan */
+      --strike-accent:  #ce34ef;          /* Neon violet */
+      --strike-vivid:   #52a6ff;          /* Electric blue */
+      --strike-edge:    #2fe0bb;          /* Neon teal */
+      --strike-bg1:     #171839;          /* Deep midnight blue */
+      --strike-bg2:     #241854;          /* Purple blue */
+      --strike-bg3:     #1b0025;          /* Machine dark */
+      --strike-white:   #f7fafc;          /* Off white */
+      --strike-gray:    #b3bfcb;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      background: radial-gradient(ellipse at 35% 30%, var(--strike-bg2) 0%, var(--strike-bg1) 55%, var(--strike-bg3) 100%);
+      color: var(--strike-white);
+      overflow-x: hidden;
+      position: relative;
+    }
+    /* Animated Stars made with only CSS */
+    .stars { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1;}
+    .star { position: absolute; background: white; border-radius: 50%; opacity: 0.78; animation: twinkle 3.2s infinite alternate;}
+    .star:nth-child(1){ width:1px;height:1px;left:10%;top:9%;animation-delay:.24s;}
+    .star:nth-child(2){ width:1.1px;height:1.1px;left:40%;top:12%;animation-delay:.54s;}
+    .star:nth-child(3){ width:2px;height:2px;left:66%;top:61%;animation-delay:.89s;}
+    .star:nth-child(4){ width:1.6px;height:1.6px;left:83%;top:19%;animation-delay:1.2s;}
+    .star:nth-child(5){ width:2.2px;height:2.2px;left:99%;top:39%;animation-delay:.32s;}
+    .star:nth-child(6){ width:1.3px;height:1.3px;left:18%;top:85%;animation-delay:.77s;}
+    .star:nth-child(7){ width:1.7px;height:1.7px;left:37%;top:77%;animation-delay:.13s;}
+    .star:nth-child(8){ width:1.3px;height:1.3px;left:80%;top:88%;animation-delay:.41s;}
+    .star:nth-child(9){ width:1.1px;height:1.1px;left:24%;top:78%;animation-delay:.67s;}
+    .star:nth-child(10){width:2px;height:2px;left:52%;top:57%;animation-delay:1.6s;}
+    @keyframes twinkle { 100% {opacity:0.39;} }
+
+    header {
+      background: linear-gradient(115deg, var(--strike-bg1) 70%, var(--strike-accent) 119%);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2.5px solid var(--strike-edge);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      box-shadow: 0 4px 30px #1b002580;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--strike-primary);
+      text-shadow: 0 0 28px var(--strike-edge), 0 0 4px var(--strike-accent);
+      animation: glowBrand 2.5s infinite alternate;
+      user-select: none;
+    }
+    @keyframes glowBrand { to {text-shadow: 0 0 44px var(--strike-primary), 0 0 4px var(--strike-accent); color: var(--strike-vivid);} }
+    nav ul {list-style:none;display:flex;gap:1.5rem;}
+    nav a {
+      text-decoration: none;
+      color: var(--strike-white);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.3s;
+    }
+    nav a:after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg,var(--strike-accent),var(--strike-primary));
+      transition: width .33s;
+      position: absolute;
+      left: 0; bottom: 0;
+    }
+    nav a:hover,
+    nav a.active { color: var(--strike-accent);}
+    nav a:hover:after,
+    nav a.active:after { width: 100%; }
+
+    main {max-width:1024px;margin:auto;padding:3rem 1.2rem 1rem 1.2rem;}
+    /* Home Section */
+    .hero {text-align:center;padding:2.3rem 1rem 2rem;}
+    .hero h1 {
+      font-size:2.7rem;
+      font-weight:900;
+      margin-bottom:0.8rem;
+      color: var(--strike-accent);
+      letter-spacing: .09em;
+      text-shadow:0 0 38px var(--strike-edge),0 0 3px #fff;
+      animation: flicker 3s infinite alternate;
+    }
+    @keyframes flicker {to {opacity:.64;}}
+    .hero p {max-width: 540px; margin:0.8rem auto; font-size:1.2rem; font-weight:500;}
+    .cta-btn {
+      display:inline-block;
+      margin:2rem 0 0 0;
+      padding:0.85rem 2.1rem;
+      background: linear-gradient(90deg,#71f0e8,#ce34ef);
+      color: var(--strike-bg3);
+      font-weight:700;
+      border:none;
+      border-radius:2rem;
+      font-size:1.13rem;
+      box-shadow: 0 5px 22px #ce34ef58;
+      text-decoration: none;
+      animation: bounce 2s infinite;
+      transition: background .3s, color .3s;
+    }
+    @keyframes bounce {50%{transform:translateY(-8px);}}
+    .cta-btn:hover {background:linear-gradient(90deg,#ce34ef,#71f0e8);color:var(--strike-white);}
+    .features { margin-top: 2.3rem;display:grid;gap:1.6rem;}
+    .feature-item {
+      background: linear-gradient(120deg, #232450 65%, #241854 100%);
+      border-radius: 13px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 1px 22px #71f0e818;
+      position: relative;
+      transition: transform .21s, box-shadow .25s;
+    }
+    .feature-item:hover {transform:scale(1.06);box-shadow:0 0 40px var(--strike-edge);}
+    .feature-icon {font-size:2.6rem;margin-bottom:1rem;color:var(--strike-primary);animation: bounce 2s infinite;}
+    .feature-title {font-weight:700;font-size:1.16rem;color:var(--strike-accent);text-transform:uppercase;letter-spacing:.07em;}
+    .feature-desc {color:var(--strike-white);font-size:1rem;}
+    /* About Section */
+    .about-section {margin-top:3.7rem;padding-top:2.6rem;border-top:2.5px solid var(--strike-edge);}
+    .about-title {font-size:2.1rem;font-weight:800;color:var(--strike-accent);text-shadow:0 0 26px var(--strike-accent);margin-bottom:0.85rem;text-align:center;}
+    .about-text {margin-bottom:2.1rem;font-size:1.17rem;line-height:1.8;text-align:center;color:var(--strike-white);}
+    .team-list {display:flex;flex-direction:column;gap:1.18rem;max-width:390px;margin:0 auto;}
+    .team-card {background:rgba(34,36,62,0.54);padding:1.1rem 1.1rem 0.6rem 1.1rem;border-radius:12px;box-shadow:0 2px 14px #71f0e818;display:flex;align-items:center;gap:1.2rem;}
+    .avatar {width:45px;height:45px;background:var(--strike-bg1);border-radius:50%;font-size:2rem;display:flex;align-items:center;justify-content:center;color:var(--strike-primary);}
+    .member {font-weight:700;font-size:1rem;color:#fff;}
+    .role {font-size:0.97rem;color:var(--strike-gray);}
+    /* Contact Section */
+    .contact-section {margin-top:3.9rem;padding-top:2.5rem;border-top:2px solid var(--strike-edge);max-width:500px;margin-left:auto;margin-right:auto;}
+    .contact-title {font-size:2rem;font-weight:800;color:var(--strike-accent);text-shadow:0 0 26px var(--strike-accent);margin-bottom:1.1rem;text-align:center;}
+    .contact-box {margin-top:1.5rem;background:rgba(34,36,62,0.61);border-radius:13px;padding:1.6rem;box-shadow:0 2px 14px #ce34ef26;}
+    form { display:grid;gap:1.13rem;}
+    label {color:var(--strike-primary);font-size:1rem;}
+    input, textarea {
+      width:100%;
+      padding:0.7rem;
+      border-radius:5px;
+      border:none;
+      margin-top:4px;
+      font-size:1rem;
+      background:linear-gradient(90deg,#191c3c 65%,#241838 100%);
+      color:var(--strike-white);
+    }
+    textarea{resize:vertical;}
+    button {
+      margin-top:0.7rem;
+      background: linear-gradient(90deg, var(--strike-accent), var(--strike-primary));
+      color: var(--strike-bg3);
+      padding: 0.7rem 1.5rem;
+      border:none;
+      border-radius:18px;
+      font-weight:700;
+      cursor:pointer;
+      transition:background .22s, color .18s;
+    }
+    button:hover {background:linear-gradient(90deg,var(--strike-primary),var(--strike-accent));color:var(--strike-white);}
+    footer {
+      margin-top:3.5rem;text-align:center;padding:1.25rem 1rem;
+      background:linear-gradient(115deg,#191c3c 65%,#201537 100%);
+      color: var(--strike-gray);
+      font-size:0.96rem;
+      border-top:2px solid var(--strike-edge);
+      letter-spacing:0.07em;
+    }
+    @media (max-width: 700px) {
+      .team-list{flex-direction:column;max-width:100%;}
+      main{padding:2rem 0.5rem;}
+      .about-section, .contact-section {margin-top:1.7rem;padding-top:0.85rem;}
+    }
+    @media(min-width:680px){.features{grid-template-columns:repeat(2,1fr);}}
+    @media(min-width:900px){.features{grid-template-columns:repeat(3,1fr);}}
+  </style>
+</head>
+<body>
+  <div class="stars">
+    <div class="star"></div><div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div><div class="star"></div>
+    <div class="star"></div>
+  </div>
+  <header>
+    <div class="logo">STRIKE</div>
+    <nav>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <!-- Home Section -->
+    <section class="hero" id="home">
+      <h1>STRIKE Universe</h1>
+      <p>
+        Take creativity into orbit! Welcome to STRIKE’s universe-themed creative design—no boundaries, just endless stars and infinite possibilities.
+      </p>
+      <a href="#about" class="cta-btn">Discover More</a>
+    </section>
+    <section class="features">
+      <div class="feature-item">
+        <div class="feature-icon">✨</div>
+        <div class="feature-title">Galactic Inspiration</div>
+        <div class="feature-desc">Cosmic, AI-powered palettes and stunning effects for unforgettable digital designs.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🌌</div>
+        <div class="feature-title">Universal Creativity</div>
+        <div class="feature-desc">Unleash your imagination with mobile-first layouts and smooth CSS animations.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🤖</div>
+        <div class="feature-title">AI Machine Energy</div>
+        <div class="feature-desc">Vibrant, modern colors inspired by advanced machine vision and future tech.</div>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="about-title">About STRIKE</div>
+      <div class="about-text">
+        STRIKE Universe is a space-inspired creative design collective blending AI, color vibrance, and mobile-first speed for digital excellence.
+      </div>
+      <div class="team-list">
+        <div class="team-card">
+          <div class="avatar">🪐</div>
+          <div>
+            <div class="member">Astra Orion</div>
+            <div class="role">Founder & Lead Designer</div>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="avatar">🤖</div>
+          <div>
+            <div class="member">Cosmo Ray</div>
+            <div class="role">AI Color Specialist</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="contact-title">Contact STRIKE</div>
+      <div class="contact-box">
+        <form>
+          <label>Name</label>
+          <input type="text" placeholder="Enter your name" required>
+          <label>Email</label>
+          <input type="email" placeholder="you@universe.com" required>
+          <label>Message</label>
+          <textarea rows="4" placeholder="Your cosmic message..." required></textarea>
+          <button type="submit">Send to Space!</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 STRIKE Universe. All rights reserved.
+  </footer>
+</body>
+</html>
+
+
+
+    
